@@ -1,0 +1,8 @@
+<div class="mb-3" *ngIf="Isactive">
+    <select class="form-select {{class}} " [(ngModel)]="catId" (ngModelChange)="onchange()" >
+      <option value="-" selected>Select any {{dropdowntitle}}</option>
+      <option *ngFor="let item of categories" [selected]="item[fieldId]==catId" value="{{item[fieldId]}}">{{item[filedName]}}</option>   
+    </select>
+    <span class="small text-danger">{{dropdownerrmsg}}</span>
+  </div>
+  

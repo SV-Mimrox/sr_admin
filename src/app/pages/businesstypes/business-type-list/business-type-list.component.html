@@ -1,0 +1,11 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Business Type" pagebreadcrumb="BusinessType"></app-pagetitlecomponent>
+    <div *ngIf="typelistloading">
+        <app-tableloader loadercol2Text="Seq No"></app-tableloader>
+    </div>
+    <div *ngIf="!typelistloading">
+        <app-tablecomponent column2Text="Seq No" [isdelete]="isdel"  (onDelete)="deletetype($event)" [tablelist]="typelist" editurl="{{businesstypeediturl}}"></app-tablecomponent>
+    </div>
+    <app-createiconcomponent routerLink="{{businesstypecreateurl}}"></app-createiconcomponent>
+    <app-datanotfound *ngIf="typelist ==null && !typelistloading"></app-datanotfound>
+</main>

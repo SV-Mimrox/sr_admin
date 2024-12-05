@@ -1,0 +1,18 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Categories" pagebreadcrumb="Categories"></app-pagetitlecomponent>
+    <div class="d-flex mb-0 align-items-center">
+        <div  class="flex-fill me-2">
+            <app-labelcontrolconcomponent label="Seller"></app-labelcontrolconcomponent>
+            <app-searchdropdowncontrolconcomponent  (selectedvalue)=onchange($event) [categories]="sellerlist" filedName="slrmName"  fieldId="id"class="bg-white bg-none"  *ngIf="Isshowselectbox"></app-searchdropdowncontrolconcomponent>           
+        </div>    
+        <button name="search" (click)="onsearch()" class="btn bg-theme btn-lg border-0 search-btn mt-2 text-white" btnname="search">Search</button>   
+    </div>
+    <div *ngIf="categoriesloading">
+        <app-catprdlistloader ></app-catprdlistloader>
+    </div>
+    <div *ngIf="!categoriesloading">
+        <app-catprdcomponent column2Text="Categories" [tablelist]="categorieslist" (onDelete)="deletecategory($event)"   (onscroll)="onScroll()" imagePath="{{imgeUrl}}" ></app-catprdcomponent>       
+    </div>
+    <!-- <app-createiconcomponent routerLink="{{businessperiodcreateurl}}"></app-createiconcomponent> -->
+    <app-datanotfound *ngIf="categorieslist ==null && !categoriesloading"></app-datanotfound>
+</main>

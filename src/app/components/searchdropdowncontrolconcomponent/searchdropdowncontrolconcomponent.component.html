@@ -1,0 +1,6 @@
+<div class="mb-3" *ngIf="Isactive" style="overflow-x: hidden;">
+    <select class="form-select {{class}} " [(ngModel)]="defaultValue" (ngModelChange)="onchange()" >
+      <option value="-" selected>All</option>
+      <option *ngFor="let item of categories" [selected]="item[fieldId]==defaultValue" value="{{item[fieldId]}}">{{item[filedName]}}</option>   
+    </select>
+  </div>

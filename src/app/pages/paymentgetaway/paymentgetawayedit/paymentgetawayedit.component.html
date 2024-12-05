@@ -1,0 +1,209 @@
+<!-- 
+<main id="main" class="main">
+    <app-pagetitlecomponent pagetitle="Create Payment Getaway"></app-pagetitlecomponent>
+    <form #form="ngForm" class="card border-0 p-3">
+        <input type="hidden" name="adminId" value="{{adminId}}" />
+        <div class="row align-items-center">
+            <div class="col-md-2">
+                <app-labelcontrolconcomponent label="Name" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{PGMNameMessage}}" [(inputModel)]="PGMName" placeholder=""
+                    class="bg-white bg-none metaInfo" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div>
+
+            <div class="col-md-4">
+                <div class="d-flex gap-2">
+                    <app-isonline [(inputModel)]="IsOnline" (change)="online()"></app-isonline>
+                    <app-paymentswich [(inputModel)]="IsBanktransfar" (change)="bankt()"></app-paymentswich>
+                </div>               
+            </div>
+            
+
+            <div class="col-md-3" *ngIf="IsOnline">
+                <app-labelcontrolconcomponent label="Key" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{PGMKeyMessage}}" [(inputModel)]="PGMKeyId" placeholder=""
+                    class="bg-white bg-none metaInfo" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div>
+
+            <div class="col-md-3" *ngIf="IsOnline">
+                <app-labelcontrolconcomponent label="Secret" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{PGMSecretMessage}}" [(inputModel)]="PGMSecret" placeholder=""
+                    class="bg-white bg-none metaInfo" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div>
+
+
+            <div class="col-md-12" *ngIf="IsBanktransfar">
+            <div class="row">
+                <div class="col-md-3">
+                    <app-labelcontrolconcomponent label="Bank Name" [star]="true"></app-labelcontrolconcomponent>
+                    <app-inputcontrolcomponent  errmsg="{{banknamemessage}}" [(inputModel)]="bankname" placeholder="" class="bg-white bg-none metaInfo"
+                        type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+                </div>
+    
+                <div class="col-md-3">
+                    <app-labelcontrolconcomponent label="Account No" [star]="true"></app-labelcontrolconcomponent>
+                    <app-inputcontrolcomponent errmsg="{{accountnomessage}}" [(inputModel)]="accountno" placeholder="" class="bg-white bg-none metaInfo"
+                        type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+                </div>
+    
+                <div class="col-md-3">
+                    <app-labelcontrolconcomponent label="AccountHolderName" [star]="true"></app-labelcontrolconcomponent>
+                    <app-inputcontrolcomponent errmsg="{{accountholdernamemessage}}" [(inputModel)]="accountholdername" placeholder=""
+                        class="bg-white bg-none metaInfo" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+                </div>
+    
+                <div class="col-md-3">
+                    <app-labelcontrolconcomponent label="IFCCode" [star]="true"></app-labelcontrolconcomponent>
+                    <app-inputcontrolcomponent errmsg="{{ifccodemessage}}" [(inputModel)]="ifccode" placeholder="" class="bg-white bg-none metaInfo"
+                        type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+                </div>
+            </div>
+        </div>
+            
+        <hr style="background-color: silver;">
+            <div class=" col-md-12">
+                <h5 class="mb-3">Country Configuration </h5>
+                <ul class="ks-cboxtags">
+                    <li *ngFor="let item of countrylist;let i = index">
+                        <input type="checkbox" [checked]="isAllcheck[i]" (click)="Countrywiseprice($event,i,item.id,item.title,item.currency)" id="{{item.title}}">
+                        <label for="{{item.title}}">{{item.title}} <span class="fw-bold">({{item.currency}})</span></label>
+                    </li>                   
+                  </ul>
+                  <span class="text-danger text-center">{{countrymessage}}</span>
+            </div>
+        </div>
+        <p class="text-danger text-center">{{mes}}</p>
+        <img width="50" class="d-block mx-auto" class="loader-img" *ngIf="loading" src="/assets/images/loader.gif" />
+        <div class="d-flex justify-content-end gap-2">
+            <app-buttoncontrolconcomponent routerLink="/{{paymentlisturl}}"
+                btnstyle="bg-silver text-dark float-end mt-3 border-0 px-3"
+                btnname="Cancel"></app-buttoncontrolconcomponent>
+            <app-buttoncontrolconcomponent [btndisable]="loading" (click)="onSubmit(form)"
+                btnstyle="bg-theme2 float-end mt-3 border-0 px-3" btnname="Save"></app-buttoncontrolconcomponent>
+        </div>
+    </form>
+</main> -->
+
+
+<main id="main" class="main">
+    <app-pagetitlecomponent pagetitle="Create Payment Gateway"></app-pagetitlecomponent>
+    <form #form="ngForm" class="card border-0 p-3">
+        <input type="hidden" name="adminId" value="{{adminId}}" />
+        <div class="row align-items-center">
+
+            <div class=" col-md-12">
+                <h5 class="mb-3"> Type </h5>
+
+                <ul class="ks-cboxtags">
+                    <!-- <li>
+                        <input type="checkbox" class="radio" [checked]="isAllcheck" value="Razorpay"  id="Payment">
+                        <label for="Payment">Razorpay</label>
+                    </li>  
+                    <li>
+                        <input type="checkbox" class="radio" [checked]="isAllcheck" value="Bank"  id="Payment">
+                        <label for="Payment">Bank</label>
+                    </li> 
+                    <li>
+                        <input type="checkbox" class="radio" [checked]="isAllcheck"  id="UPI">
+                        <label for="UPI">UPI</label>
+                    </li>                     -->
+
+                    <input type="radio" id="Razorpay" [(ngModel)]="PGMName" name="PGMName" value="Razorpay">
+                    <label for="Razorpay">Razorpay</label><br>
+
+                    <input type="radio" id="Bank" [(ngModel)]="PGMName" name="PGMName" value="Bank">
+                    <label for="Bank">Bank</label><br>
+
+                    <input type="radio" id="Cash" [(ngModel)]="PGMName" name="PGMName" value="COD">
+                    <label for="Cash">COD</label><br>
+
+                    <!-- <input type="radio" id="UPI" [(ngModel)]="PGMName" name="PGMName" value="UPI">
+                    <label for="UPI">UPI</label><br> -->
+                  </ul>
+                
+
+            </div>
+
+
+
+            <!-- <div class="col-md-2">
+                <app-labelcontrolconcomponent label="Name" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{PGMNameMessage}}" [(inputModel)]="PGMName" placeholder=""
+                    class="bg-white bg-none metaInfo" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div> -->
+
+            <!-- <div class="col-md-4">
+                <div class="d-flex gap-2">
+                    <app-isonline [(inputModel)]="IsOnline" (change)="online()"></app-isonline>
+                    <app-paymentswich [(inputModel)]="IsBanktransfar" (change)="bankt()"></app-paymentswich>
+                </div>               
+            </div> -->
+            
+
+            <div class="col-md-3" *ngIf="PGMName == 'Razorpay'">
+                <app-labelcontrolconcomponent label="Key" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{PGMKeyMessage}}" [(inputModel)]="PGMKeyId" placeholder=""
+                    class="bg-white bg-none metaInfo" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div>
+
+            <div class="col-md-3" *ngIf="PGMName == 'Razorpay'">
+                <app-labelcontrolconcomponent label="Secret" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{PGMSecretMessage}}" [(inputModel)]="PGMSecret" placeholder=""
+                    class="bg-white bg-none metaInfo" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div>
+
+
+            <div class="col-md-12" *ngIf="PGMName == 'Bank'">
+            <div class="row">
+                <div class="col-md-3">
+                    <app-labelcontrolconcomponent label="Bank Name" [star]="true"></app-labelcontrolconcomponent>
+                    <app-inputcontrolcomponent  errmsg="{{banknamemessage}}" [(inputModel)]="bankname" placeholder="" class="bg-white bg-none metaInfo"
+                        type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+                </div>
+    
+                <div class="col-md-3">
+                    <app-labelcontrolconcomponent label="Account No" [star]="true"></app-labelcontrolconcomponent>
+                    <app-inputcontrolcomponent errmsg="{{accountnomessage}}" [(inputModel)]="accountno" placeholder="" class="bg-white bg-none metaInfo"
+                        type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+                </div>
+    
+                <div class="col-md-3">
+                    <app-labelcontrolconcomponent label="Account Holder Name" [star]="true"></app-labelcontrolconcomponent>
+                    <app-inputcontrolcomponent errmsg="{{accountholdernamemessage}}" [(inputModel)]="accountholdername" placeholder=""
+                        class="bg-white bg-none metaInfo" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+                </div>
+    
+                <div class="col-md-3">
+                    <app-labelcontrolconcomponent label="IFSC Code" [star]="true"></app-labelcontrolconcomponent>
+                    <app-inputcontrolcomponent errmsg="{{ifccodemessage}}" [(inputModel)]="ifccode" placeholder="" class="bg-white bg-none metaInfo"
+                        type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+                </div>
+            </div>
+        </div>
+        <app-activeswitchcontrolconcomponent [(inputModel)]="IsActive"></app-activeswitchcontrolconcomponent>
+            
+        <!-- <hr style="background-color: silver;">
+
+            <div class=" col-md-12">
+                <h5 class="mb-3">Country Configuration </h5>
+
+                <ul class="ks-cboxtags">
+                    <li *ngFor="let item of countrylist;let i = index">
+                        <input type="checkbox" [checked]="isAllcheck" (click)="Countrywiseprice($event,i,item.id,item.title,item.currency)" id="{{item.title}}">
+                        <label for="{{item.title}}">{{item.title}} <span class="fw-bold">({{item.currency}})</span></label>
+                    </li>                   
+                  </ul>
+                  <span class="text-danger text-center">{{countrymessage}}</span>
+
+            </div> -->
+        </div>
+        <p class="text-danger text-center">{{mes}}</p>
+        <img width="50" class="d-block mx-auto" class="loader-img" *ngIf="loading" src="/assets/images/loader.gif" />
+        <div class="d-flex justify-content-end gap-2">
+            <app-buttoncontrolconcomponent routerLink="/{{paymentlisturl}}"
+                btnstyle="bg-silver text-dark float-end mt-3 border-0 px-3"
+                btnname="Cancel"></app-buttoncontrolconcomponent>
+            <app-buttoncontrolconcomponent [btndisable]="loading" (click)="onSubmit(form)"
+                btnstyle="bg-theme2 float-end mt-3 border-0 px-3" btnname="Save"></app-buttoncontrolconcomponent>
+        </div>
+    </form>
+</main>

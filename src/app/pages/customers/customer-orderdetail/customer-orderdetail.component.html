@@ -1,0 +1,18 @@
+<main id="main" class="main">
+  <div *ngIf="loading">
+    <app-orderdetailsloader></app-orderdetailsloader>
+  </div>
+  <div *ngIf="!loading">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Order Id {{ orderNo }}" pagebreadcrumb="orderDetail"></app-pagetitlecomponent>
+    <app-customerinfocomponents [cusinfo]="ordDetails"></app-customerinfocomponents>
+    <app-paymentinfocomponents [payinfo]="ordDetails"></app-paymentinfocomponents>
+    <app-orderitemcomponents [orditemcurrency]="currency" [orditeminfo]="orditem" imagePath="{{ imageUrl }}" class="col-md-4"></app-orderitemcomponents>
+    <div class="card border-0 p-3">
+      <p class="mb-2">Price ({{qty}} item) <span class="float-end">{{currency}} {{totalprice}}</span></p>
+      <p class="mb-2">Discount <span class="float-end text-success">- {{currency}} {{discountAmount}}</span></p>
+      <p class="mb-3" *ngIf="deliveryCharge != 0">Dilivery Charge <span class="float-end">{{currency}} {{deliveryCharge}}</span></p>
+      <p class="mb-3" *ngIf="deliveryCharge == 0">Dilivery Charge <span class="float-end">Free</span></p>
+      <h5 class="mb-0 fw-bold">Total Amount <span class="fw-bold float-end">{{currency}} {{ttprice + deliveryCharge -discountAmount}}</span></h5>
+    </div>
+  </div>
+</main>

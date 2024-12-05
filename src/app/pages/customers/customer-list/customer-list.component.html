@@ -1,0 +1,11 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Customers" pagebreadcrumb="Customers"></app-pagetitlecomponent>
+    <div *ngIf="customerloading">
+        <app-customerloader></app-customerloader>
+    </div>
+    <div *ngIf="!customerloading">
+      
+        <app-slrcstcomponent column0Text="Sellers" column1Text="Name" column2Text="Contact" (onDelete)="deletecategory($event)" column3Text="Email" (onscroll)="onScroll()" [tablelist]="customerlist"></app-slrcstcomponent>       
+    </div>    
+    <app-datanotfound *ngIf="customerlist ==null && !customerloading"></app-datanotfound>
+</main>

@@ -1,0 +1,20 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent pagetitle="Edit Tax Head"></app-pagetitlecomponent>
+    <form #form="ngForm" class="card border-0 p-3">
+        <input type="hidden" name="id" value="{{id}}" />
+        <input type="hidden" name="adminId" value="{{adminId}}" />          
+        <div class="d-flex flex-wrap gap-3">
+            <div class="flex-fill">
+                <app-labelcontrolconcomponent label="Name" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{editaxnameMessage}}" [(inputModel)]="thmTitle" placeholder="" class="bg-white bg-none" type="text"></app-inputcontrolcomponent>          
+            </div>            
+        </div>        
+        <app-activeswitchcontrolconcomponent [(inputModel)]="thmIsActive"></app-activeswitchcontrolconcomponent>         
+        <span class="text-danger">{{mes}}</span>
+        <img *ngIf="taxloading" width="50" class="d-block mx-auto" class="loader-img" src="/assets/images/loader.gif" />
+        <div class="d-flex justify-content-end gap-2">        
+            <app-buttoncontrolconcomponent routerLink="{{taxheadlisturl}}" btnstyle="bg-silver text-dark float-end mt-3 border-0 px-3" btnname="Cancel"></app-buttoncontrolconcomponent>    
+            <app-buttoncontrolconcomponent [btndisable]="taxloading" (click)="onSubmit(form)"  btnstyle="bg-theme2 float-end mt-3 border-0 px-3" btnname="Save"></app-buttoncontrolconcomponent>
+        </div>   
+    </form>    
+</main>

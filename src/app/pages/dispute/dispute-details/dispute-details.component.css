@@ -1,0 +1,44 @@
+.input-bar{
+    position: relative;
+    -height: 84vh;
+}
+.chat-data{
+    -border: 1px solid red;
+    height:55vh;    
+    scrollbar-width: thin;
+	scrollbar-color: #aab7cf transparent;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+.chat-data::-webkit-scrollbar {
+	width: 5px;
+	height: 8px;
+	background-color: #fff;
+  }
+  .chat-data::-webkit-scrollbar-thumb {
+	background-color: #aab7cf;
+  }
+.bottom-chat-input{
+    -border: 1px solid red;    
+    position: fixed;
+    bottom: 20px;
+    left: 280px;
+    right: 20px;
+    border-radius: 5px;
+}
+.bottom-chat-input input{
+    padding: 10px;
+}
+
+.loader-img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width:575px){
+    .bottom-chat-input{
+        left: 20px;
+    }
+}

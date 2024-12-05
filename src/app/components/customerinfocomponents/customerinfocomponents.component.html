@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="{{class}}">
+        <div class="card border-0">
+            <div class="card-header bg-white d-flex align-items-center justify-content-between flex-wrap ">
+                <div>
+                    <h6 class="mb-1 fw-600">{{cusinfo.name}}</h6>
+                    <p class="small text-secondary mb-0">+91 {{cusinfo.contact}} | {{cusinfo.email}}</p>    
+                </div>   
+                <span class="text-theme fw-bold" *ngIf="cusinfo.status =='Delivered'">Dilivered on : {{cusinfo.deliveryDate}}</span>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between flex-wrap">
+                    <div class="flex-grow-1" style="flex-basis: 48%;">
+                        <h6 class="mb-2 fw-600">Shipping Address</h6>            
+                        <small class="text-secondary">{{cusinfo.shippingAddress}}</small>
+                    </div>
+                    <div class="flex-grow-1"  style="flex-basis: 48%;">
+                        <h6 class="mb-2 fw-600">Billing Address</h6>            
+                        <small class="text-secondary">{{cusinfo.billingAddress}}</small>
+                    </div>
+                </div> 
+            </div>                       
+        </div>
+    </div>
+</div>
+

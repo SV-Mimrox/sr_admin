@@ -1,0 +1,38 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent pagetitle="Edit Country"></app-pagetitlecomponent>
+    <form #form="ngForm" class="card border-0 p-3">
+        <input type="hidden" name="Id" value="{{Id}}" />
+        <input type="hidden" name="adminId" value="{{adminId}}" />          
+        <div class="d-flex flex-wrap gap-3">
+            <div class="flex-fill">
+                <app-labelcontrolconcomponent label="Name" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{editnameMessage}}" [(inputModel)]="ccmName" placeholder="" class="bg-white bg-none" type="text"></app-inputcontrolcomponent>          
+            </div>
+            <div class="flex-fill">
+                <app-labelcontrolconcomponent label="Code" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{editcodeMessage}}" [(inputModel)]="ccmCode" placeholder="" class="bg-white bg-none" type="text"></app-inputcontrolcomponent>          
+            </div>
+            <div class="flex-fill">
+                <app-labelcontrolconcomponent label="Currency" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{editcurrencyMessage}}" [(inputModel)]="ccmCurrency" placeholder="" class="bg-white bg-none" type="text"></app-inputcontrolcomponent>          
+            </div>
+        </div>  
+
+        <h5>Select Payment Getaway</h5>
+        <div *ngFor="let item of Paymentlist;let i = index">
+            <input type="radio" id="{{item.id}}" [(ngModel)]="payId" name="payId" (click)="payment(item.id, item.pgmName)" value="{{item.id}}">
+            <label for="{{item.id}}">{{item.pgmName}}</label><br>
+        </div>
+        <p class="text-danger text-center">{{cntpaymentmessage}}</p>
+
+        <app-defaultswich [(inputModel)]="ccmIsDefault"></app-defaultswich>       
+        <app-activeswitchcontrolconcomponent [(inputModel)]="ccmIsActive"></app-activeswitchcontrolconcomponent> 
+        
+        <span class="text-danger">{{mes}}</span>
+        <img *ngIf="loading" width="50" class="d-block mx-auto" class="loader-img" src="/assets/images/loader.gif" />
+        <div class="d-flex justify-content-end gap-2">        
+            <app-buttoncontrolconcomponent routerLink="{{countrylisturl}}" btnstyle="bg-silver text-dark float-end mt-3 border-0 px-3" btnname="Cancel"></app-buttoncontrolconcomponent>    
+            <app-buttoncontrolconcomponent [btndisable]="loading" (click)="onSubmit(form)"  btnstyle="bg-theme2 float-end mt-3 border-0 px-3" btnname="Save"></app-buttoncontrolconcomponent>
+        </div>   
+    </form>    
+</main>

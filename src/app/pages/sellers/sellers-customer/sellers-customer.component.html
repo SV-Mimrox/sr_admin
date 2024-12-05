@@ -1,0 +1,10 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent *ngIf="!loading" [counts]="false"  pagetitle="{{slrname}}  Customers" pagebreadcrumb="customers"></app-pagetitlecomponent>
+    <div *ngIf="loading">
+        <app-slrcstloader ></app-slrcstloader>
+    </div>
+    <div *ngIf="!loading">
+        <app-slrcstcomponent column0Text="-"  column1Text="Name" column2Text="Contact"  (onDelete)="deletecategory($event)" column3Text="Email" [tablelist]="cstslrList"></app-slrcstcomponent>
+    </div>
+    <app-datanotfound *ngIf="cstslrList ==null && !loading"></app-datanotfound>
+</main>

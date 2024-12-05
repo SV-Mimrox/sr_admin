@@ -1,0 +1,45 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Orders" pagebreadcrumb="Orders"></app-pagetitlecomponent>
+    <div class="card p-3 border-0 shadow">
+        <div class="row">   
+            <div class="col-md-2">
+                <app-labelcontrolconcomponent label="Start Date" [star]="false"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent [(inputModel)]="fromDate"  placeholder="" class="bg-white bg-none" type="date" *ngIf="Isshowinput"></app-inputcontrolcomponent>        
+            </div>        
+            <div class="col-md-2">
+                <app-labelcontrolconcomponent label="End Date" [star]="false"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent [(inputModel)]="toDate"  placeholder="" class="bg-white bg-none" type="date" *ngIf="Isshowinput"></app-inputcontrolcomponent>        
+            </div>
+            <div class="col-md-2">
+                <app-labelcontrolconcomponent label="Status" [star]="false"></app-labelcontrolconcomponent>
+                <select class="form-select me-2" (change)=ordstatusDD($event);>
+                   <option value="All">All</option>
+                    <option value="{{status.Name}}" *ngFor="let status of orderStatusDD" >{{status.Name}}</option>         
+                </select> 
+            </div>
+            <div class="col-md-3">
+                <app-labelcontrolconcomponent label="Seller"></app-labelcontrolconcomponent>
+                <app-searchdropdowncontrolconcomponent  (selectedvalue)=onchange($event) [categories]="sellerlist" filedName="slrmName"  fieldId="id"class="bg-white bg-none"  *ngIf="Isshowselectbox"></app-searchdropdowncontrolconcomponent>           
+            </div>  
+            <div class="col-md-3">
+                <app-labelcontrolconcomponent label="Categories"></app-labelcontrolconcomponent>
+                <app-searchdropdowncontrolconcomponent  [defaultValue]="catId"  (change)=onchange1($event)  [categories]="categorieslist" filedName="title"  fieldId="catalogueId"class="bg-white bg-none col-md-2"  *ngIf="Isshowselectbox"></app-searchdropdowncontrolconcomponent>
+            </div>
+            <div class="col-md-10 ">
+                <app-labelcontrolconcomponent label="Products" [star]="false"></app-labelcontrolconcomponent>
+                <app-searchdropdowncontrolconcomponent    [defaultValue]="prdId"  (change)=onchange2($event)  [categories]="productlist" filedName="title"  fieldId="id"class="bg-white bg-none"  *ngIf="Isshowselectbox"></app-searchdropdowncontrolconcomponent>
+            </div>               
+           <div class="col-md-2">
+            <app-buttoncontrolconcomponent  name="search" (click)="onsearch()" btnstyle="bg-theme2 border-0 w-100 mt-4 btn-lg search-btn" btnname="search"></app-buttoncontrolconcomponent>            
+           </div>             
+        </div>
+    </div>
+    <div *ngIf="orderlistloading">
+        <app-orderloader [column1Text]="true"></app-orderloader>
+    </div>
+    <div *ngIf="!orderlistloading">
+        <app-order orderType="All" column1Text="Customer Name" column2Text="Order Date" column3Text="Order No" [tablelist]="orderlist" (onscroll)="onScroll()" ></app-order>       
+    </div>
+    <!-- <app-createiconcomponent routerLink="{{businessperiodcreateurl}}"></app-createiconcomponent> -->
+    <app-datanotfound *ngIf="orderlist ==null && !orderlistloading"></app-datanotfound>
+</main>

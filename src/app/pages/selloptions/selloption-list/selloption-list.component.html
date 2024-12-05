@@ -1,0 +1,12 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Sell Option" pagebreadcrumb="SellOption"></app-pagetitlecomponent>
+    <div *ngIf="selloptionlistloading">
+        <app-tableloader loadercol2Text="Seq No"></app-tableloader>
+    </div>
+    <div *ngIf="!selloptionlistloading">
+        <app-tablecomponent column2Text="Seq No" [isdelete]="isdel"  (onDelete)="deleteselloption($event)" [tablelist]="selloptionlist" editurl="{{selloptionediturl}}"></app-tablecomponent>
+    </div>
+    <app-createiconcomponent routerLink="{{selloptioncreateurl}}"></app-createiconcomponent>
+    <app-datanotfound *ngIf="selloptionlist ==null && !selloptionlistloading"></app-datanotfound>
+</main>
+    

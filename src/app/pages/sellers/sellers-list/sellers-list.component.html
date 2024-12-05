@@ -1,0 +1,11 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Sellers" pagebreadcrumb="Sellers"></app-pagetitlecomponent>
+    <div *ngIf="slrlistloading">
+        <app-sellerslistloader loadercol2Text="Seq No"></app-sellerslistloader>
+    </div>
+    <div *ngIf="!slrlistloading">
+        <app-sellerlistcomponent [slrtablelist]="sellerlist" [isdelete]="isdel" (onDelete)="deleteseller($event)" editurl="{{editurl}}" (onscroll)="onScroll()" ></app-sellerlistcomponent>       
+    </div>
+    <!-- <app-createiconcomponent routerLink="{{businessperiodcreateurl}}"></app-createiconcomponent> -->
+    <app-datanotfound *ngIf="sellerlist ==null && !slrlistloading"></app-datanotfound>
+</main>

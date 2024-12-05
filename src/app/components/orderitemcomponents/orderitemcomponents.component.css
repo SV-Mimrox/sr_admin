@@ -1,0 +1,16 @@
+.cat-logo{
+    width: 70px;
+    height: 65px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 5px;padding: 5px;
+}
+.p-name{
+    -white-space: nowrap;
+    display: -webkit-box;
+    overflow: hidden;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    
+}

@@ -1,0 +1,8 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Dispute" pagebreadcrumb="Dispute"></app-pagetitlecomponent>
+    <div *ngIf="displistloading"><app-disputeloader></app-disputeloader></div>
+    <div *ngIf="!displistloading">
+        <app-dispcomponent  [isdelete]="isdel"  [DisPlist]="displist"  detailsturl="{{dispdetailsurl}}"></app-dispcomponent>
+    </div>
+    <app-datanotfound *ngIf="displist == null && !displistloading"></app-datanotfound>
+</main>

@@ -1,0 +1,11 @@
+.form-select {
+    background-size: 15px !important;
+    border:0;
+    border: 1px solid #DDDDDD;
+    height: 45px;
+    border-radius: 5px;             
+    background-color: #fbfbfb;
+}
+.form-select:focus{
+    box-shadow: none;
+}

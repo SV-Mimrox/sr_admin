@@ -1,0 +1,89 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent pagetitle="Edit Subscription"></app-pagetitlecomponent>
+    <form #form="ngForm" class="card border-0 p-3">
+        <input type="hidden" name="adminId" value="{{adminId}}" />
+        <div class="d-flex flex-wrap gap-3">
+            <div class="flex-fill">
+                <app-labelcontrolconcomponent label="Title" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{spmTitleMessage}}" [(inputModel)]="spmTitle" placeholder=""
+                    class="bg-white bg-none metaInfo" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div>
+            <!-- <div class="flex-fill">
+                <app-labelcontrolconcomponent label="Default Amount" [star]="false"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{spmAmountMessage}}" minVal="0" [(inputModel)]="spmAmount"
+                    placeholder="" class="bg-white bg-none" type="number"
+                    *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div> -->
+            <div class="col-md-3">
+                <app-labelcontrolconcomponent label="Duration Type" [star]="true"></app-labelcontrolconcomponent>
+                <select class="form-select me-2" (change)=durationtypeDD($event);>
+
+                    <option value="{{dType.Name}}" [selected]="dType.Name == spmDurationType"
+                        *ngFor="let dType of DurationTypeDD">{{dType.Name}}</option>
+                </select>
+
+            </div>
+            <div class="flex-fill">
+                <app-labelcontrolconcomponent label="Duration" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{spmDurationMessage}}" minVal="0" [(inputModel)]="spmDuration"
+                    placeholder="" class="bg-white bg-none" type="number"
+                    *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div>
+            <div class="flex-fill">
+                <app-labelcontrolconcomponent label="SeqNo" [star]="true"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent errmsg="{{spmSeqNoMessage}}" [(inputModel)]="spmSeqNo" placeholder=""
+                    class="bg-white bg-none" type="number" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div>
+            <div class="col-md-3">
+                <app-labelcontrolconcomponent label="Type" [star]="true"></app-labelcontrolconcomponent>
+                <select class="form-select me-2" (change)=typeDD($event);>
+                    <!-- <option value="All">All</option> -->
+                    <option value="{{Type.Name}}" [selected]="Type.Name == spmType" *ngFor="let Type of TypeDD">
+                        {{Type.Name}}</option>
+                </select>
+            </div>
+            <div class="flex-fill col-md-8">
+                <app-labelcontrolconcomponent label="Support" [star]="false"></app-labelcontrolconcomponent>
+                <app-inputcontrolcomponent [(inputModel)]="spmSupport" placeholder="" class="bg-white bg-none"
+                    type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>
+            </div>
+            <div class="flex-fill">
+                <app-labelcontrolconcomponent label="Features" [star]="false"></app-labelcontrolconcomponent>
+                <app-textareacontrolcontrolcomponent [(inputModel)]="spmFeatures"
+                    class="textarea metaDescText"></app-textareacontrolcontrolcomponent>
+                <!-- <app-inputcontrolcomponent  [(inputModel)]="spmFeatures" placeholder="" class="bg-white bg-none" type="text" *ngIf="Isshowinput"></app-inputcontrolcomponent>              -->
+            </div>
+
+
+            <div class="flex-fill col-md-12">
+                <h5>Country Configuration Amount</h5>
+                <div class="d-flex flex-wrap align-items-center mb-3" *ngFor="let item of countrylist;let i = index">
+                    <input type="checkbox" [checked]="isAllcheck" (click)="Countrywiseprice($event,i,item.id)"
+                        class="form-check-input me-2">
+                    <span class="d-block c-name">{{item.title}} ({{item.currency}})</span>
+
+                    <app-inputcontrolcomponent [(inputModel)]="amount[i]" placeholder="Enter Amount"
+                        class="bg-white bg-none" grid="mb-0imp mt-md-0 mt-2 amt-textbox"
+                        type="text"></app-inputcontrolcomponent>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <app-activeswitchcontrolconcomponent [(inputModel)]="spmIsActive"></app-activeswitchcontrolconcomponent>
+
+
+
+        <p class="text-danger text-center">{{mes}}</p>
+        <img width="50" class="d-block mx-auto" class="loader-img" *ngIf="spmloading" src="/assets/images/loader.gif" />
+        <div class="d-flex justify-content-end gap-2">
+            <app-buttoncontrolconcomponent routerLink="/{{subscriptionlisturl}}"
+                btnstyle="bg-silver text-dark float-end mt-3 border-0 px-3"
+                btnname="Cancel"></app-buttoncontrolconcomponent>
+            <app-buttoncontrolconcomponent [btndisable]="spmloading" (click)="onSubmit(form)"
+                btnstyle="bg-theme2 float-end mt-3 border-0 px-3" btnname="Save"></app-buttoncontrolconcomponent>
+        </div>
+    </form>
+</main>

@@ -1,0 +1,38 @@
+<style>
+   .active,.active > i{
+      background-color: #0C8CC9;
+      color:white;
+   }
+</style>
+<aside id="sidebar" class="sidebar">   
+    <app-logocomponent logostyle="mb-3 logo-img-sidebar"></app-logocomponent>
+    <ul class="sidebar-nav" id="sidebar-nav">            
+       <li class="nav-item" *ngFor="let item of menuItems">
+          <a class="nav-link" routerLinkActive="active"  routerLink="/{{item.href}}"><i class="bi {{item.icon}}"></i> {{item.label}}</a>              
+       </li> 
+       <li class="nav-item">
+         <a class="nav-link d-block" href="#subitem" data-bs-toggle="collapse" ><i class="bi bi-person"></i> Sellers <i class="bi bi-chevron-right small float-end" style="margin-top: 2px;"></i></a>    
+         <ul class="collapse inner-menu p-0" id="subitem" style="background-color: #dde6eb;">
+            <li class="nav-item"><a routerLink="{{sellerslisturl}}" class="nav-link"><i class="bi bi-card-list"></i> Seller List</a></li>
+            <li class="nav-item"><a routerLink="{{categorieslisturl}}" class="nav-link"><i class="bi bi-journal-bookmark"></i> Seller Categories</a></li>
+            <li class="nav-item"><a routerLink="{{productslisturl}}" class="nav-link"><i class="bi bi-diagram-2"></i> Seller Products</a></li>
+            <li class="nav-item"><a routerLink="{{orderlisturl}}" class="nav-link"><i class="bi bi-boxes"></i> Seller Orders</a></li>
+         </ul>          
+      </li>  
+      <li class="nav-item">
+         <a class="nav-link" routerLink="{{customerslisturl}}"><i class="bi bi-people"></i> Customers</a>              
+      </li> 
+      <li class="nav-item">
+         <a class="nav-link" routerLink="{{subscriptionlisturl}}"><i class="fa-regular fa-file-lines"></i> Subscription</a>              
+      </li> 
+      <li class="nav-item">
+         <a class="nav-link" routerLink="{{paymenturl}}"><i class="fa-regular fa-file-lines"></i> Payment Gateway</a>              
+      </li>
+      <!-- <li class="nav-item">
+         <a class="nav-link" href="#" ><i class="bi bi-gear"></i> Settings</a>              
+      </li>     -->
+      <li class="nav-item">
+         <a class="nav-link" href="/logout" ><i class="bi bi-box-arrow-in-right"></i> Logout</a>              
+      </li>                         
+    </ul>
+</aside> 

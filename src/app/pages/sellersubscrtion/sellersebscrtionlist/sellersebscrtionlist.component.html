@@ -1,0 +1,10 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Seller Subscription " pagebreadcrumb="Seller Subscription"></app-pagetitlecomponent>   
+    <div *ngIf="subloading">
+        <app-sellersubloader></app-sellersubloader>
+    </div>
+    <div *ngIf="!subloading">
+        <app-sellersublist    [spmlist]="Sublist" editurl=""></app-sellersublist>
+    </div>
+    <app-datanotfound *ngIf="Sublist ==null && !subloading"></app-datanotfound>
+</main>

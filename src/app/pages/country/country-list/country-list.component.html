@@ -1,0 +1,11 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Country" pagebreadcrumb="Country"></app-pagetitlecomponent>
+    <div *ngIf="cntlistloading">
+        <app-countryloader loadercol2Text="Code"></app-countryloader>
+    </div>
+    <div *ngIf="!cntlistloading">
+        <app-countrycomponent column2Text="Code" [isdelete]="isdel"  (onDelete)="deletecountry($event)" [cntlist]="countrylist" editurl="{{countryediturl}}"></app-countrycomponent>
+    </div>
+    <app-createiconcomponent routerLink="{{countrycreateurl}}"></app-createiconcomponent>
+    <app-datanotfound *ngIf="countrylist ==null && !cntlistloading"></app-datanotfound>
+</main>

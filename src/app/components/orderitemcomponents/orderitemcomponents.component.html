@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="{{class}}" *ngFor="let item of orditeminfo">
+        <div class="card p-3 border-0">
+            <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">                  
+                  <img src="{{imagePath}}/{{item.productImage}}" class="img-fluid cat-logo"  alt="...">
+                </div>
+                <div class="flex-grow-1 ms-3" style="width:75%">         
+                    <small class="text-success">{{item.catalogueName}} - <b>{{item.productCode}}</b></small>           
+                    <p class="my-0 text-secondary p-name small">{{item.productName}}</p>                    
+                    <div class="d-flex justify-content-between align-items-center text-theme2">
+                        <span>{{orditemcurrency}} {{item.productPrice}} x {{item.itemQty}}</span>
+                        <span>{{orditemcurrency}} {{item.totalPrice}}</span>
+                    </div>
+                </div>               
+              </div>
+              <!-- <a href="#" class="stretched-link"></a> -->
+        </div>
+    </div>
+</div>

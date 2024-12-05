@@ -1,0 +1,38 @@
+th{
+    vertical-align: middle;
+}
+
+td{
+    vertical-align: middle;
+    padding-top: 20px;
+}
+th{
+    vertical-align: middle;
+}
+
+td{
+    vertical-align: middle;
+    padding-top: 20px;
+}
+
+.table>:not(:last-child)>:last-child>* {
+    border-bottom-color: #fff;
+}
+th{
+    background-color: #f0f0f0;
+    padding: 15px;
+}
+th:first-child{
+    border-radius: 5px 0 0 5px;
+}
+th:last-child{
+    border-radius: 0 5px 5px 0;
+}
+td{
+    vertical-align: middle;
+}
+.slider-img{
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+}

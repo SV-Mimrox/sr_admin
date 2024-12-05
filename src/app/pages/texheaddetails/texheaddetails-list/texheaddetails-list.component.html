@@ -1,0 +1,9 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Tax Head Details" pagebreadcrumb="Tax Head Details"></app-pagetitlecomponent>
+    <div *ngIf="taxDetailslistloading"><app-texhead-detailsloader></app-texhead-detailsloader></div>
+    <div *ngIf="!taxDetailslistloading">
+        <app-texhead-detailscomponent  [isdelete]="isdel"  (onDelete)="deletetexHeadDetails($event)" [texheadDetailslist]="taxHeadDetailslist" editurl="{{taxheadDetailsediturl}}"></app-texhead-detailscomponent>
+    </div>
+    <app-createiconcomponent routerLink="{{taxheadDetailscreateurl}}"></app-createiconcomponent>
+    <app-datanotfound *ngIf="taxHeadDetailslist == null && !taxDetailslistloading"></app-datanotfound>
+</main>

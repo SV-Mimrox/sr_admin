@@ -1,0 +1,11 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Subscription" pagebreadcrumb="Subscription"></app-pagetitlecomponent>   
+    <div *ngIf="Subscriptionloading">
+        <app-subscriptionloader></app-subscriptionloader>
+    </div>
+    <div *ngIf="!Subscriptionloading">
+        <app-subscriptioncomponent [isdelete]="isdel"  (onDelete)="deletespm($event)" [spmlist]="Subscriptionlist" editurl="{{subscriptionediturl}}"></app-subscriptioncomponent>
+    </div>
+    <app-createiconcomponent routerLink="{{subscriptioncreateurl}}"></app-createiconcomponent>
+    <app-datanotfound *ngIf="Subscriptionlist ==null && !Subscriptionloading"></app-datanotfound>
+</main>

@@ -1,0 +1,56 @@
+<main class="main" id="main">
+    <img *ngIf="disploading" width="50" class="d-block mx-auto" class="loader-img" src="/assets/images/loader.gif" />
+    <div class="mb-2 text-end">
+        <a class="btn bg-theme me-2 text-white" routerLink="{{displisturl}}" type="button">Back</a>
+        <a *ngIf="dispHeadList.dhmStatus != 'Close'" href="#sl{{dispHeadList.id}}" class="btn btn-danger" data-bs-toggle="modal">Click here to Close Ticket</a>
+    </div>    
+    <div class="rounded-3 border-0 bg-theme text-white p-3 mb-3 d-flex flex-wrap justify-content-between align-items-center">
+        <div>
+            <h5 class="mb-1 fw-bold">{{dispHeadList.dhmName}}</h5>
+            <span class="text-light small">Mobile No : {{dispHeadList.dhmContact}}</span>&nbsp;&nbsp;&nbsp;
+            <span class="text-light small">Ticket No : {{dispHeadList.dhmTicketNo}}</span>
+        </div>
+        <div>
+            <span *ngIf="dispHeadList.dhmStatus=='Close'" class="badge bg-danger rounded-pill text-white p-2 px-3" style="font-size: 15px;">{{dispHeadList.dhmStatus}}</span>
+            <span *ngIf="dispHeadList.dhmStatus=='Open'" class="badge bg-light rounded-pill text-success p-2 px-3" style="font-size: 15px;">{{dispHeadList.dhmStatus}}</span>
+        </div>
+    </div>
+    <div class="chat-data">
+        <div *ngFor="let msg of dispmsgList" class="mb-2">
+            <div>
+                <div class="receiver text-end" *ngIf="msg.messageType == 'receiver'">
+                    <span class="border-0 rounded-pill py-1 px-3 d-inline-block" style="background-color: rgb(181, 227, 245);">{{msg.message}}</span><br>
+                    <small class="text-secondary" style="font-size: 12px;">{{msg.ddDate}}</small>
+                </div>
+            </div>
+            <div>
+                <div class="sender" *ngIf="msg.messageType == 'sender'">
+                    <span class="border-0 rounded-pill py-1 px-3 d-inline-block" style="background-color: #f0f0f0;">{{msg.message}}</span><br>
+                    <small class="text-secondary" style="font-size: 12px;">{{msg.ddDate}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form class="input-bar" #form="ngForm" *ngIf="dispHeadList.dhmStatus != 'Close'" >
+        <div class="bottom-chat-input d-flex gap-2">
+            <input type="text" class="form-control" name="message"  [(ngModel)]="message" style="width: 100%;">
+            <button type="search" class="btn bg-theme text-white" (click)="onSubmit(form)"  placeholder="Write message..."><i class="fa-regular fa-paper-plane"></i></button>
+        </div>
+    </form>
+    <div class="modal fade" id="sl{{dispHeadList.id}}">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center fw-600">Close Ticket No : {{dispHeadList.dhmTicketNo}} </h5>
+                    <p class="text-center text-secondary small">Are you sure you want to Close this Ticket ?</p>
+                </div>
+                <div class="modal-footer justify-content-center border-0 pt-0">
+                    <button type="button" (click)="cancelTicket(dispHeadList.id)" data-bs-dismiss="modal"  class="btn btn-danger">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+</main>

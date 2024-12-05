@@ -1,0 +1,10 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="{{cstname}} Orders" pagebreadcrumb="Orders"></app-pagetitlecomponent>
+    <div *ngIf="cstorderlistloading">
+        <app-orderloader></app-orderloader>
+    </div>
+    <div *ngIf="!cstorderlistloading">
+        <app-order orderType="Particular" column2Text="Order Date" column3Text="Order No" [tablelist]="cstorderlist" (onscroll)="onScroll()" ></app-order>       
+    </div>    
+    <app-datanotfound *ngIf="(cstorderlist ==null || cstorderlist.length == 0 ) && !cstorderlistloading"></app-datanotfound>
+</main>

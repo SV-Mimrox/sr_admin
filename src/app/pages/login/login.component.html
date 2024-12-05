@@ -1,0 +1,23 @@
+<div class="login-sec shadow-sm">
+  <app-logocomponent logostyle="login-logo mb-3 mx-auto d-block"></app-logocomponent>
+  <h4 class="text-center fw-normal text-theme">Sign In</h4>
+  <form #form="ngForm"  class="p-2 pb-3">
+    <app-inputcontrolcomponent errmsg="{{emailMessage}}"  type="email" placeholder="Enter Username" [(inputModel)]="Username" class="bg-light" ></app-inputcontrolcomponent>
+    <app-inputcontrolcomponent errmsg="{{passwordMessage}}" type="password" placeholder="Enter Password" [(inputModel)]="Password" class="bg-light"></app-inputcontrolcomponent>
+    <div class="col-sm-12 mb-2">
+      <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+      <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
+        <div *ngIf="['recaptcha.errors.required']">This field is required.</div>
+      </div>
+    </div>
+    <app-accountbuttoncomponent [buttondisable]="loading"  (click)="onSubmit(form)" loginbtnname="Sign In" stylebtn="btn-lg bg-theme text-white w-100 border-0 mt-3"></app-accountbuttoncomponent>
+    &nbsp;&nbsp;&nbsp;
+    <p class="text-center text-danger" id="err">{{this.mes}}</p>
+  </form>
+  <div class="loader-img-login">
+    <!-- <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /> -->
+    <img *ngIf="loading" src="/assets/images/loginloder.gif" />
+  </div>
+</div>                       
+   
+

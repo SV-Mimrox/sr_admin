@@ -1,0 +1,12 @@
+<div class="{{class}}">
+    <div class="card border-0">
+        <div class="card-header bg-white">
+           <span class="text-theme"> Order Id {{payinfo.orderNo}} <small class="badge {{payinfo.status | trim}}  rounded-pill fw-normal float-end">{{payinfo.status}}</small></span>           
+        </div>
+        <div class="card-body">
+            <p class="mb-2 small text-secondary"><b>Ordered on : </b> <span class="text-secondary">{{payinfo.orderDate }}</span></p>
+            <p class="mb-2 small text-secondary"><b>Payment Method</b> : <span class="text-secondary">{{payinfo.paymentMethod}}</span></p>
+            <p class="mb-0 small text-secondary"><b>Payment Status</b> : <span class="text-secondary">{{payinfo.paymentStatus}}</span></p>
+        </div>
+    </div>
+</div>

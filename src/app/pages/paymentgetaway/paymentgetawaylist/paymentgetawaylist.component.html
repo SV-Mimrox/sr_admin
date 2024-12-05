@@ -1,0 +1,11 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Payment Gateway" pagebreadcrumb="Payment Getaway"></app-pagetitlecomponent>   
+    <div *ngIf="paymentloading">
+        <app-subscriptionloader></app-subscriptionloader>
+    </div>
+    <div *ngIf="!paymentloading">
+        <app-paymentlist [isdelete]="isdel"  (onDelete)="deletespm($event)" [spmlist]="Paymentlist" editurl="{{paymentediturl}}"></app-paymentlist>
+    </div>
+    <app-createiconcomponent routerLink="{{paymentcreateurl}}"></app-createiconcomponent>
+    <app-datanotfound *ngIf="Paymentlist ==null && !paymentloading"></app-datanotfound>
+</main>

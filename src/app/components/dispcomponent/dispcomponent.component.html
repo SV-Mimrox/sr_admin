@@ -1,0 +1,39 @@
+<div class="col-md-12">
+    <div class="card p-3 shadow-sm border-0">
+      <input   type="text" class="form-control search-control"  name="searchString" placeholder="Type to search..." [(ngModel)]="searchString"/>                     
+    </div>
+  </div>
+  <div class="slider-list">     
+      <div class="card border-0 p-3">
+        <div class="table-responsive">
+          <table class="table mb-0">
+              <thead>
+                <tr>                                                        
+                  <th>Ticket No</th>         
+                  <th>Name</th>                                                      
+                  <th>Contact</th>
+                  <th>Subject</th>
+                  <th>Status</th>    
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of DisPlist | searchFilter:searchString">                                            
+                  <td class="text-theme">{{item.dhmTicketNo}}</td>                                  
+                  <td class="text-theme">{{item.dhmName}}</td>                                  
+                  <td class="text-theme">{{item.dhmContact}}</td>                                  
+                  <td class="text-theme">{{item.dhmSubject}}</td>
+                  <td class="text-theme">{{item.dhmStatus}}</td>                                                                      
+                  <td class="text-center position-relative">
+                    <button class="btn bg-theme border-0 btn-sm" type="button" routerLink="/{{detailsturl}}/{{item.id}}">
+                        <i class="bi bi-eye text-white small"></i>
+                    </button>                                              
+                </td>                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>                            
+  
+  </div>
+  

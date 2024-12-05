@@ -1,0 +1,75 @@
+<div class="slider-list">     
+    <div class="card border-0 p-3">
+        <table class="table mb-0">
+            <thead>
+              <tr>                           
+                <th>Seller Name</th>                
+                <th *ngIf="column1Text" >Customer Name</th>
+                <th>Order Date</th>
+                <th>Order No</th>                     
+                <th>Status</th>                   
+                <!-- <th class="text-center">Action</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let items of loderarry">                            
+                <td>
+                  <ngx-skeleton-loader count="1" appearance="line"
+                      animation="progress-dark"
+                      [theme]="{
+                      width:'100px',
+                      height:'20px'
+                      }">
+                  </ngx-skeleton-loader>  
+                </td>
+                <td *ngIf="column1Text">
+                  <ngx-skeleton-loader count="1" appearance="line"
+                      animation="progress-dark"
+                      [theme]="{
+                      width:'100px',
+                      height:'20px'
+                      }">
+                  </ngx-skeleton-loader> 
+                </td>
+                <td>
+                    <ngx-skeleton-loader count="1" appearance="line"
+                        animation="progress-dark"
+                        [theme]="{
+                        width:'120px',
+                        height:'20px'
+                        }">
+                    </ngx-skeleton-loader> 
+                  </td>
+                <td>
+                  <ngx-skeleton-loader count="1" appearance="line"
+                      animation="progress-dark"
+                      [theme]="{
+                      width:'70px',
+                      height:'20px'
+                      }">
+                  </ngx-skeleton-loader> 
+                </td>
+                <td>
+                  <ngx-skeleton-loader count="1" appearance="line"
+                      animation="progress-dark"
+                      [theme]="{
+                      width:'70px',
+                      height:'20px'
+                      }">
+                  </ngx-skeleton-loader> 
+                </td>                                
+                <!-- <td class="text-center">
+                  <ngx-skeleton-loader count="1" appearance="line"
+                  animation="progress-dark"
+                  [theme]="{
+                  width:'50px',
+                  height:'20px'
+                  }">
+              </ngx-skeleton-loader> 
+                </td> -->
+              </tr>             
+            </tbody>
+          </table>
+    </div>                            
+
+</div>

@@ -1,0 +1,22 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Products" pagebreadcrumb="Products"></app-pagetitlecomponent>
+    <div class="d-flex mb-0 align-items-center">
+        <div  class="flex-fill me-2">
+            <app-labelcontrolconcomponent label="Seller"></app-labelcontrolconcomponent>
+            <app-searchdropdowncontrolconcomponent  (selectedvalue)=onchange($event) [categories]="sellerlist" filedName="slrmName"  fieldId="id"class="bg-white bg-none"  *ngIf="Isshowselectbox"></app-searchdropdowncontrolconcomponent>           
+        </div>    
+        <div  class="flex-fill me-2">
+            <app-labelcontrolconcomponent label="Categories"></app-labelcontrolconcomponent>
+            <app-searchdropdowncontrolconcomponent   (selectedvalue)=onchange1($event) [categories]="categorieslist" filedName="title"  fieldId="catalogueId" class="bg-white bg-none"  *ngIf="Isshowselectbox"></app-searchdropdowncontrolconcomponent>           
+        </div>    
+        <button name="search" (click)="onsearch()" class="btn bg-theme btn-lg border-0 search-btn mt-2 text-white" btnname="search">Search</button>   
+    </div>
+    <div *ngIf="productsloading">
+        <app-prdlistloader></app-prdlistloader>
+    </div>
+    <div *ngIf="!productsloading">
+        <app-catprdcomponent column1Text="Categories" outofproduct="true"  column2Text="Product" (onDelete)="deletecategory($event)" column3Text="Item Code" [tablelist]="productslist" (onscroll)="onScroll()" imagePath="{{imgeUrl}}" ></app-catprdcomponent>       
+    </div>
+    <!-- <app-createiconcomponent routerLink="{{businessperiodcreateurl}}"></app-createiconcomponent> -->
+    <app-datanotfound *ngIf="productslist ==null && !productsloading"></app-datanotfound>
+</main>

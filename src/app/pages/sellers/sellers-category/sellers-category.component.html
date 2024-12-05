@@ -1,0 +1,10 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent *ngIf="!loading" [counts]="false"  pagetitle="{{catname}}  Categories" pagebreadcrumb="Categories"></app-pagetitlecomponent>
+    <div *ngIf="loading">
+        <app-slrcatlistloader ></app-slrcatlistloader>
+    </div>
+    <div *ngIf="!loading">
+        <app-slrcatprdcomponent column2Text="Categories" [tablelist]="catslrList" (onDelete)="deletecategory($event)"  imagePath="{{imgeUrl}}" ></app-slrcatprdcomponent>       
+    </div>
+    <app-datanotfound *ngIf="catslrList ==null && !loading"></app-datanotfound>
+</main>

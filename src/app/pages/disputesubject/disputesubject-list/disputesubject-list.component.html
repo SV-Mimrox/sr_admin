@@ -1,0 +1,9 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Dispute Subject" pagebreadcrumb="Dispute Subject"></app-pagetitlecomponent>
+    <div *ngIf="dsmlistloading"><app-dis-subjectloader></app-dis-subjectloader></div>
+    <div *ngIf="!dsmlistloading">
+        <app-dis-subjectcomponent  [isdelete]="isdel"  (onDelete)="deletedisSubject($event)" [DisSubjectlist]="dsmlist" editurl="{{disSubjectediturl}}"></app-dis-subjectcomponent>
+    </div>
+    <app-createiconcomponent routerLink="{{disSubjectcreateurl}}"></app-createiconcomponent>
+    <app-datanotfound *ngIf="dsmlist == null && !dsmlistloading"></app-datanotfound>
+</main>

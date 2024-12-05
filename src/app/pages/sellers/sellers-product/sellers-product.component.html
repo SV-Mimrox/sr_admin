@@ -1,0 +1,11 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent *ngIf="!loading" [counts]="false"  pagetitle="{{slrname}}  Products" pagebreadcrumb="Products"></app-pagetitlecomponent>
+    <div *ngIf="loading">
+        <app-slrprdlistloader ></app-slrprdlistloader>
+    </div>
+    <div *ngIf="!loading">
+       
+    <app-slrcatprdcomponent column1Text="Categories" outofproduct="true" column2Text="Product" (onDelete)="deletecategory($event)"   column3Text="Item Code" [tablelist]="prdslrList"  imagePath="{{imgeUrl}}" ></app-slrcatprdcomponent>       
+</div>    
+<app-datanotfound *ngIf="prdslrList ==null && !loading"></app-datanotfound>
+</main>

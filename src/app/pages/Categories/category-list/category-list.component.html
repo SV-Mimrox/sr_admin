@@ -1,0 +1,11 @@
+<main id="main" class="main">
+    <app-pagetitlecomponent [counts]="false"  pagetitle="Category" pagebreadcrumb="Category"></app-pagetitlecomponent>
+    <div *ngIf="catlistloading">
+        <app-tableloader loadercol2Text="Seq No"></app-tableloader>
+    </div>
+    <div *ngIf="!catlistloading">
+        <app-tablecomponent column2Text="Seq No" [isdelete]="isdel"  (onDelete)="deletecategory($event)" [tablelist]="categorylist" editurl="{{categoryediturl}}"></app-tablecomponent>
+    </div>
+    <app-createiconcomponent routerLink="{{categorycreateurl}}"></app-createiconcomponent>
+    <app-datanotfound *ngIf="categorylist ==null && !catlistloading"></app-datanotfound>
+</main>
